@@ -1,55 +1,54 @@
-# Keyboard Maestro Action Export Plan
+# Keyboard Maestro Export Plan
 
-## Destination
+## Goal
 
-Build a lean, import-safe Keyboard Maestro template library for natural-language macro assembly.
+Make a clean library of real Keyboard Maestro actions.
 
-## Known Facts
+The rule is simple:
 
-- Keyboard Maestro actions are macro steps.
-- Existing assembler rules are slot-only: replace only explicit `{{SLOT_NAME}}` placeholders.
-- Current assembler-ready exports cover mouse clicks and text snippets.
-- Raw exports must be slotized before the general assembler can use them.
+- Export the real action from Keyboard Maestro.
+- Save the raw export.
+- Make a slot version only when it has clear `{{SLOT_NAME}}` fields.
+- Never invent Keyboard Maestro XML.
 
-## Folder Shape
+## Folders
 
 ```text
 templates/action-groups/{number}_{group-label}/raw
 templates/action-groups/{number}_{group-label}/slotized
 ```
 
-File shape:
+File names:
 
 ```text
 {number}_{group-label}_{action-name}.kmmacros
 ```
 
-## Tickets
+## Task List
 
-1. Repo setup and public GitHub
-2. Template folder cleanup and registry
-3. Interface actions
-4. Text, variables, and snippets
-5. Clipboard actions
-6. Control-flow actions
-7. File actions
-8. Browser and web-form actions
-9. Script and shortcut actions
-10. Image and OCR actions
-11. Prompt, alert, and notification actions
-12. Keyboard Maestro control, application, window, and system actions
+1. Keep folders and registry clean.
+2. Export mouse and keyboard actions.
+3. Export text and variable actions.
+4. Export clipboard actions.
+5. Export if, pause, and repeat actions.
+6. Export file actions.
+7. Export browser form actions.
+8. Export script actions.
+9. Export image and OCR actions.
+10. Export prompt and alert actions.
+11. Export app, window, and system actions.
 
 ## Export Checklist
 
-### 01 Interface
+### 01 Mouse and Keyboard
 
 - Move or Click Mouse
 - Type a Keystroke
 - Press a Button
 - Select or Show a Menu Item
-- Found Image click variants
+- Found Image Click
 
-### 02 Text, Variables, Snippets
+### 02 Text and Variables
 
 - Insert Text
 - Insert Text by Typing
@@ -68,7 +67,7 @@ File shape:
 - Paste from Named Clipboard
 - Clipboard History Switcher
 
-### 07 Control Flow
+### 07 If, Pause, Repeat
 
 - If Then Else
 - Switch/Case
@@ -147,7 +146,7 @@ File shape:
 - Cancel This Macro
 - Cancel All Macros
 
-### 11 Application and Window
+### 11 Apps and Windows
 
 - Activate Application
 - Quit Application
@@ -164,8 +163,9 @@ File shape:
 - Mounted Volume actions
 - Open Finder Selection
 
-## Do Not
+## Done Means
 
-- Do not invent XML or plist keys.
-- Do not add action-group labels beyond the four Wayfinder labels in GitHub/Linear.
-- Do not mark a group done until raw export, slotized export, manifest entry, and assembler validation are complete.
+- Raw export is saved.
+- Slot version is saved if needed.
+- Registry is updated.
+- Assembler still builds.
