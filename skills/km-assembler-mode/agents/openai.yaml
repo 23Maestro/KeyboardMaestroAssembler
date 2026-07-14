@@ -1,0 +1,4 @@
+interface:
+  display_name: "KM Assembler Mode"
+  short_description: "Slot-only Keyboard Maestro XML assembly"
+  default_prompt: "Assemble Keyboard Maestro .kmmacros files by retrieving existing repository XML blocks and injecting values only into declared {{SLOT_NAME}} placeholders."

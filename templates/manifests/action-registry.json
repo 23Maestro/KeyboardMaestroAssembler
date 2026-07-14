@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "source": "Keyboard Maestro exported .kmmacros templates",
+  "rules": [
+    "Do not invent Keyboard Maestro XML.",
+    "Slotized templates may only replace explicit {{SLOT_NAME}} placeholders.",
+    "Generated macros must receive fresh UUID values through explicit UUID slots."
+  ],
+  "groups": [
+    {
+      "id": "01_interface",
+      "label": "Interface",
+      "docs": "https://wiki.keyboardmaestro.com/Actions",
+      "status": "seeded",
+      "templates": [
+        {
+          "action": "Move or Click Mouse",
+          "macroActionTypes": ["MouseMoveAndClick"],
+          "slotizedPath": "templates/action-groups/01_interface/slotized/01_interface_move-or-click-mouse-one-click.kmmacros",
+          "slots": ["UUID_MACRO", "X1", "Y1"],
+          "status": "assembler-ready"
+        },
+        {
+          "action": "Move or Click Mouse",
+          "macroActionTypes": ["MouseMoveAndClick", "Pause", "MouseMoveAndClick"],
+          "slotizedPath": "templates/action-groups/01_interface/slotized/01_interface_move-or-click-mouse-two-clicks.kmmacros",
+          "slots": ["UUID_MACRO", "X1", "Y1", "X2", "Y2"],
+          "status": "assembler-ready"
+        },
+        {
+          "action": "Move or Click Mouse with Found Image",
+          "macroActionTypes": ["IfThenElse", "MouseMoveAndClick", "MouseMoveAndClick", "Pause"],
+          "rawPath": "templates/action-groups/01_interface/raw/01_interface_move-or-click-mouse-found-image-appearance.kmmacros",
+          "slots": [],
+          "status": "raw-transformer-input"
+        }
+      ]
+    },
+    {
+      "id": "02_text-snippets",
+      "label": "Text and Snippets",
+      "docs": "https://wiki.keyboardmaestro.com/Actions",
+      "status": "seeded",
+      "templates": [
+        {
+          "action": "Insert Text",
+          "macroActionTypes": ["InsertText"],
+          "slotizedPath": "templates/action-groups/02_text-snippets/slotized/01_text-snippets_insert-text-standard.kmmacros",
+          "slots": ["UUID_MACRO", "SNIPPET_NAME", "SNIPPET_TRIGGER", "SNIPPET_TEXT"],
+          "status": "assembler-ready"
+        },
+        {
+          "action": "Insert Text",
+          "macroActionTypes": ["InsertText", "Pause", "SimulateKeystroke"],
+          "slotizedPath": "templates/action-groups/02_text-snippets/slotized/02_text-snippets_insert-text-codex-superpowers.kmmacros",
+          "slots": ["UUID_MACRO", "SNIPPET_NAME", "SNIPPET_TRIGGER", "SNIPPET_TEXT"],
+          "status": "assembler-ready"
+        },
+        {
+          "action": "Prompt for Snippet",
+          "macroActionTypes": ["PromptForSnippet"],
+          "rawPath": "templates/action-groups/02_text-snippets/raw/01_text-snippets_prompt-for-snippet-placeholder.kmmacros",
+          "slots": [],
+          "status": "raw-export"
+        }
+      ]
+    },
+    {
+      "id": "03_browser-forms",
+      "label": "Browser Forms",
+      "docs": "https://wiki.keyboardmaestro.com/Actions",
+      "status": "raw-exports-only"
+    },
+    {
+      "id": "04_files",
+      "label": "Files",
+      "docs": "https://wiki.keyboardmaestro.com/Actions",
+      "status": "raw-exports-only"
+    },
+    {
+      "id": "05_clipboard",
+      "label": "Clipboard",
+      "docs": "https://wiki.keyboardmaestro.com/Actions",
+      "status": "raw-exports-only"
+    },
+    {
+      "id": "06_scripts",
+      "label": "Scripts",
+      "docs": "https://wiki.keyboardmaestro.com/Actions",
+      "status": "raw-exports-only"
+    }
+  ],
+  "nextExportGroups": [
+    "Control Flow",
+    "Files",
+    "Browser Forms",
+    "Scripts",
+    "Images and OCR",
+    "Prompts and Alerts",
+    "Keyboard Maestro Control"
+  ]
+}
+

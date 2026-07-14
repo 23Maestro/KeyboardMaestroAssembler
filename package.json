@@ -1,0 +1,133 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "list-keyboard-maestro-macros",
+  "title": "Keyboard Maestro - List Macros",
+  "description": "List and quickly trigger Keyboard Maestro Macros, bringing the \"Trigger Macro by Name\" action directly into Raycast",
+  "icon": "icon.png",
+  "author": "eluce2",
+  "contributors": [
+    "suaw3k",
+    "fakerr",
+    "jerami_singleton"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "list",
+      "title": "List Macros",
+      "subtitle": "Keyboard Maestro",
+      "description": "List and quickly trigger Keyboard Maestro Macros",
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "name",
+          "placeholder": "Macro Name",
+          "type": "text",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "assemble",
+      "title": "Assemble Click Template",
+      "subtitle": "Keyboard Maestro",
+      "description": "Fill click templates with coordinates",
+      "mode": "view"
+    },
+    {
+      "name": "assemble-found-image",
+      "title": "Assemble Found Image Template",
+      "subtitle": "Keyboard Maestro",
+      "description": "Fill found-image templates with the latest light and dark screenshots",
+      "mode": "view"
+    },
+    {
+      "name": "create-snippet",
+      "title": "Create KMacro Snippet",
+      "subtitle": "Keyboard Maestro",
+      "description": "Create and import a snippet macro into SNIPPETS2",
+      "mode": "view"
+    },
+    {
+      "name": "search-snippets",
+      "title": "Search KMacro Snippets",
+      "subtitle": "Keyboard Maestro",
+      "description": "Search and execute snippet macros from SNIPPETS and SNIPPETS2",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "displayShortcuts",
+      "description": "Do you want to display macro shortcuts?",
+      "type": "checkbox",
+      "required": false,
+      "title": "Display Details",
+      "label": "Shortcuts",
+      "default": false
+    },
+    {
+      "name": "displayTriggers",
+      "description": "Do you want to display macro text triggers?",
+      "type": "checkbox",
+      "required": false,
+      "label": "Text Triggers",
+      "default": false
+    },
+    {
+      "name": "displayIcon",
+      "description": "Do you want to display icons?",
+      "type": "checkbox",
+      "required": false,
+      "label": "Icons",
+      "default": false
+    },
+    {
+      "name": "filterPattern",
+      "description": "Enter a group name to filter. Use double quotes for an exact match; otherwise, it will be treated as a partial name.",
+      "type": "textfield",
+      "required": false,
+      "title": "Filter Macro Groups",
+      "placeholder": "Macro group name, partial name, or regex",
+      "default": ""
+    },
+    {
+      "name": "useRegex",
+      "description": "Use regex to filter macro groups",
+      "type": "checkbox",
+      "required": false,
+      "label": "Use Regex",
+      "default": false
+    },
+    {
+      "name": "showDisabled",
+      "description": "Do you want to include disabled macros?",
+      "type": "checkbox",
+      "required": false,
+      "title": "Filter Macros",
+      "label": "Show Disabled Macros",
+      "default": false
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.104.17",
+    "@raycast/utils": "^2.2.4",
+    "fuse.js": "^7.3.0",
+    "plist": "^5.0.0",
+    "run-applescript": "^7.1.0"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^2.1.1",
+    "@types/node": "^25.8.0",
+    "@types/plist": "^3.0.5",
+    "eslint": "^10.4.0",
+    "prettier": "^3.8.3",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint"
+  }
+}

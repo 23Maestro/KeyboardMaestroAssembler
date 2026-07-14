@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>529820799.97452098</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>99978515</integer>
+						<key>DisplayKind</key>
+						<string>Variable</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<false/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScript</string>
+						<key>NotifyOnFailure</key>
+						<false/>
+						<key>Path</key>
+						<string></string>
+						<key>StopOnFailure</key>
+						<false/>
+						<key>Text</key>
+						<string>(function(){
+
+	function getXPath(node) {
+
+		if ( node instanceof Document ) {
+			return '/';
+		}
+
+		if ( node.hasAttribute("id") ) {
+			return '//' + node.tagName + '[@id="' + node.id + '"]';
+		}
+
+		var xpath = '/' + node.tagName;
+
+		if ( node.previousSibling || node.nextSibling ) { // abrieviate if we have no siblings, especially HTML and BODY
+			var position = 1
+			for (var curNode = node.previousSibling; curNode; curNode = curNode.previousSibling) {
+				if (curNode.tagName == node.tagName) {
+					++position;
+				}
+			}
+			var need = 0;
+			if ( position &gt; 1 ) {
+				need = 1;
+			} else {
+				for (var curNode = node.nextSibling; curNode; curNode = curNode.nextSibling) {
+					if (curNode.tagName == node.tagName) {
+						need = 1;
+						break;
+					}
+				}
+			}
+			if ( need ) {
+				xpath = xpath + '[' + position + ']';
+			}
+		}
+
+		var parent = node.parentNode;
+		if ( !(parent instanceof Document) ) {
+			xpath = getXPath(parent) + xpath;
+		}
+		return xpath;
+	}
+
+	function getRadioXPath(node) {
+		if ( node.type == "radio" ) {
+			var name = e.getAttribute('name');
+
+			var encodedName;
+			if ( !name.includes("'") ) {
+				encodedName = "'" + name + "'";
+			} else if ( !name.includes('"') ) {
+				encodedName = '"' + name + '"';
+			} else {
+				encodedName = "concat('" + name.replace(/'/g, "',\"'\",'") + "')";
+			}
+			return getXPath(node.parentNode) + '/' + node.tagName +  '[@name=' + encodedName + ']';
+		} else {
+			return "none";
+		}
+	}
+
+	var result = "";
+	var inputs = document.getElementsByTagName('input');
+	for ( var index = 0; index &lt; inputs.length; index++ ) {
+		var e = inputs[index];
+		var evalue = escape(e.value);
+// 		if ( e.type == "checkbox" || e.type == "radio" ) {
+// 			evalue = e.value;
+// 		}
+		var echecked = "0";
+		if ( e.type == "checkbox" || e.type == "radio" ) {
+			if ( e.checked ) {
+				echecked = "1";
+			}
+		}
+		if ( e.type == 'hidden' ) {
+			continue;
+		}
+		result = result + e.type + '##KM##' + getRadioXPath( e ) + '##KM##' + getXPath( e ) + '##KM##' + echecked + '##KM##' + evalue + "\n"; //  + '#' + escape(e.value)
+	}
+	return result;
+
+})();
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseModernSyntax</key>
+						<false/>
+						<key>UseText</key>
+						<true/>
+						<key>Variable</key>
+						<string>Web Snapshot Data</string>
+						<key>WebBrowser</key>
+						<string>Front Browser</string>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>529820814.82836699</real>
+				<key>ModificationDate</key>
+				<real>529833470.02659899</real>
+				<key>Name</key>
+				<string>[SUB] Read Fields</string>
+				<key>Triggers</key>
+				<array/>
+				<key>UID</key>
+				<string>B587D039-ED21-43C5-BEE3-F940AD41C07C</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Browser Forms</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.apple.Safari</string>
+					<key>Name</key>
+					<string>Safari</string>
+					<key>NewFile</key>
+					<string>/Applications/Safari.app</string>
+				</dict>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.google.Chrome</string>
+					<key>Name</key>
+					<string>Google Chrome</string>
+					<key>NewFile</key>
+					<string>/Applications/Google Chrome.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>A1F84EB3-8AEC-43D2-9883-84C0FD79247B</string>
+		<key>UID</key>
+		<string>F269D816-931F-4FEF-A937-23E814ECA655</string>
+	</dict>
+</array>
+</plist>
